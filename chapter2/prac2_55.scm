@@ -1,0 +1,2 @@
+(display (car ''abracadabra))
+(newline)

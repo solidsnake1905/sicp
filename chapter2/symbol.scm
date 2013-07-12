@@ -1,0 +1,18 @@
+(define a 1)
+
+(define b 2)
+
+(display (list a b))
+(newline)
+(display (list 'a 'b))
+(newline)
+(display (list 'a b))
+(newline)
+(display (car '(a b c)))
+(newline)
+(display (cdr '(a b c)))
+(newline)
+(display '())
+(newline)
+(display ())
+(newline)

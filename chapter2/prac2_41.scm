@@ -1,0 +1,35 @@
+(define (accumulate op initial sequence)
+ (cond ((null? sequence) initial)
+	   ((not (pair? sequence)) sequence)
+	   (else (op (car sequence)
+				 (accumulate op initial (cdr sequence))))
+  )
+)
+
+(define (flatmap proc seq)
+ (accumulate append () (map proc seq)))
+
+(define (filter predicate seq)
+ (cond ((null? seq) ())
+	   (else (if (predicate (car seq))
+				 (cons (car seq) (filter predicate (cdr seq)))
+				 (filter predicate (cdr seq))))))
+
+(define (enumerate-interval i j)
+ (if (> i j)
+	 ()
+	 (cons i (enumerate-interval (+ i 1) j))))
+
+(define (generate-diff s n)
+ (filter (lambda (u) (and (not (= (car u) (car (cdr u)))) (not (= (car u) (cadr (cdr u)))))) (filter (lambda (v) (= (+ (car v) (car (cdr v)) (cadr (cdr v))) s)) (flatmap (lambda (x) (flatmap (lambda (y) (map (lambda (z) (list x y z)) (enumerate-interval 1 n))) (enumerate-interval 1 n))) (enumerate-interval 1 n)))))
+
+(define x (cons 1 2))
+(define y (list 1 2))
+
+(newline)
+(display (generate-diff 10 6))
+(newline)
+(display x)
+(newline)
+(display y)
+(newline)

@@ -1,0 +1,65 @@
+(define (accumulate op initial sequence)
+ (cond ((null? sequence) initial)
+	   ((not (pair? sequence)) sequence)
+	   (else (op (car sequence)
+				 (accumulate op initial (cdr sequence))))
+  )
+)
+
+(define (enumerate-interval i j)
+ (if (> i j)
+	 ()
+	 (cons i (enumerate-interval (+ i 1) j))))
+
+(define (flatmap proc seq)
+ (accumulate append () (map proc seq)))
+
+(define (filter predicate seq)
+ (cond ((null? seq) ())
+	   (else (if (predicate (car seq))
+				 (cons (car seq) (filter predicate (cdr seq)))
+				 (filter predicate (cdr seq))))))
+
+(define (queen-collision? q1 q2)
+ (or (= (car q1) (car q2))
+	 (= (cadr q1) (cadr q2))
+	 (= (abs (- (car q1) (car q2))) (abs (- (cadr q1) (cadr q2))))))
+	
+(define empty-board ())
+(define (safe? col positions) 
+ (define (safe?-iter pivot others)
+  (if (null? others)
+	  #t
+	  (and (not (queen-collision? pivot (car others)))
+		   (safe?-iter pivot (cdr others)))))
+ (if (or (null? positions) (= 1 (length positions)))
+	 #t
+	 (safe?-iter (car positions) (cdr positions))
+))
+
+(define (adjoin-position row col rest-of-queens) (cons (list row col) rest-of-queens))
+
+(define (queens board-size)
+ (define (queen-cols k)
+ (if (= k 0)
+	 (list empty-board)
+	 (filter
+	  (lambda (positions) (safe? k positions))
+	  (flatmap
+	   (lambda (rest-of-queens)
+		(map (lambda (new-row) (adjoin-position new-row k rest-of-queens))
+		 (enumerate-interval 1 board-size)))
+	   (queen-cols (- k 1))))))
+(queen-cols board-size)
+ )
+
+(display (queens 4))
+(newline)
+(display (queens 5))
+(newline)
+(display (queens 6))
+(newline)
+(display (queens 7))
+(newline)
+(display (queens 8))
+(newline)
