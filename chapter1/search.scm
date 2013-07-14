@@ -17,7 +17,7 @@
 	)
 
 
-(print (search (lambda (x) (- x 1)) -2 2))
+(display (search (lambda (x) (- x 1)) -2 2))
 
 
 (define (half-interval-method f a b)
@@ -27,4 +27,4 @@
 			((and (positive? a-value) (negative? b-value)) (search f b a))
 			(else (error "Values are not of apposite sign" a b)))))
 
-(print (half-interval-method sin 2 4))
+(display (half-interval-method sin 2 4))

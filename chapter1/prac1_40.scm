@@ -27,4 +27,4 @@
 (define (sqrt_ x)
  ((newton-method (lambda (y) (- (* y y) x))) 1.0))
 
-(print (sqrt_ 2.0))
+(display (sqrt_ 2.0))

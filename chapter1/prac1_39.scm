@@ -20,4 +20,4 @@
 (define (tan-cf x k)
  (/ (cont-frac (lambda (n) (- (* x x))) (lambda (n) (- (* 2 n) 1)) k) (- x)))
 
-(print (tan-cf (/ pi 4.0) 1000))
+(display (tan-cf (/ pi 4.0) 1000))

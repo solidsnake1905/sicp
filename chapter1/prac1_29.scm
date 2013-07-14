@@ -19,7 +19,7 @@
  (* x x x)
  )
 
-(print (simpson-integral cube 0 1.0 10))
-(print (simpson-integral cube 0 1.0 100))
-(print (simpson-integral cube 0 1.0 1000))
-(print (simpson-integral cube 0 1.0 10000))
+(display (simpson-integral cube 0 1.0 10))
+(display (simpson-integral cube 0 1.0 100))
+(display (simpson-integral cube 0 1.0 1000))
+(display (simpson-integral cube 0 1.0 10000))

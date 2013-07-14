@@ -13,6 +13,6 @@
 (define (cube a)
  (* a a a))
 
-(print (sum + 1 inc 10))
-(print (sum square 1 inc 10))
-(print (sum cube 1 inc 10))
+(display (sum + 1 inc 10))
+(display (sum square 1 inc 10))
+(display (sum cube 1 inc 10))

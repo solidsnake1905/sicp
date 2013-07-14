@@ -15,6 +15,6 @@
 (define (identity x) x)
 (define (cube x) (* x x x))
 
-(print (integral identity 0 1 0.0001))
-(print (integral cube 0 1 0.01))
-(print (integral cube 0 1 0.001))
+(display (integral identity 0 1 0.0001))
+(display (integral cube 0 1 0.01))
+(display (integral cube 0 1 0.001))

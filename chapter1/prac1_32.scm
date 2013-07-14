@@ -15,11 +15,11 @@
 (define (simple-product a b)
  (product (lambda (n) n) a (lambda (n) (+ n 1)) b))
 
-(print (simple-sum 0 10))
-(print (simple-sum 0 100))
-(print (simple-sum 0 1000))
-(print (simple-sum 0 10000))
+(display (simple-sum 0 10))
+(display (simple-sum 0 100))
+(display (simple-sum 0 1000))
+(display (simple-sum 0 10000))
 
-(print (simple-product 1 5))
-(print (simple-product 1 6))
-(print (simple-product 1 7))
+(display (simple-product 1 5))
+(display (simple-product 1 6))
+(display (simple-product 1 7))

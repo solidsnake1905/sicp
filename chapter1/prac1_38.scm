@@ -18,4 +18,4 @@
 (define (euler k)
  (+ 2.0 (cont-frac (lambda (x) 1.0) (lambda (x) (if(= 2 (remainder x 3)) (/ (+ x 4) 3) 1)) k)))
 
-(print (euler 1000))
+(display (euler 1000))

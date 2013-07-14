@@ -5,6 +5,6 @@
 (define (func a b c)
  (max_ (max_ a b) (max_ b c)))
 
-(print (func 1 2 3))
-(print (func 3 2 1))
-(print (func 1 3 2))
+(display (func 1 2 3))
+(display (func 3 2 1))
+(display (func 1 3 2))
